@@ -30,8 +30,6 @@ function displayItems(result){
 $(function() {
   console.log("Hello, world!");
 
-  // Assign handlers immediately after making the request,
-  // and remember the jqxhr object for this request
   var jqxhr = $.getJSON( "data/data.json", function() {
     console.log( "success loading data" );
   })
