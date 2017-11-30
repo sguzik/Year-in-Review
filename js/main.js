@@ -11,8 +11,8 @@ function displayItems(result){
     $(header).appendTo("#editIndex");
     for (var e = 0; e < topic.editorials.length; e++) {
       edit = topic.editorials[e];
-      editHTML = '<div id="' + _.uniqueId('edit_') + '">'
-      editHTML += '<p><a href="' + edit.url + '">' + edit.headline + '</a></p>';
+      editHTML = '<div class="editorial" id="' + _.uniqueId('edit_') + '">'
+      editHTML += '<span><a href="' + edit.url + '">' + edit.headline + '</a></span>';
       editHTML += '</div>';
       $(editHTML).appendTo("#" + topic.id);
     }
