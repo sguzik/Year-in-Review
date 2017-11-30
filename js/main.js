@@ -17,14 +17,6 @@ function displayItems(result){
       $(editHTML).appendTo("#" + topic.id);
     }
   }
-
-  /*
-  for (var topic in result){
-    console.log(topic);
-    header = "<h2>" + topic + "</h2>";
-    $(header).appendTo("#editIndex");
-  }
-  */
 }
 
 $(function() {
@@ -58,9 +50,6 @@ $(function() {
             }
           }else{
             if (!_.find(groups, {topic: item.keywords}) ) {
-              //true
-              //groups.splice(_.sortedIndex(groups, item.keywords), 0, item.keywords);
-              //groups[item.keywords] = [];
               newGroup = {
                 topic: item.keywords,
                 id: _.uniqueId('topic_'),
@@ -68,9 +57,7 @@ $(function() {
               }
               groups.splice(_.sortedIndex(groups, newGroup, 'topic'), 0, newGroup );
             }
-            //console.log(groups);
             insertIndex = _.findIndex(groups, {topic: item.keywords});
-            //console.log( _.findIndex(groups, {topic: item.keywords}) );
             groups[insertIndex].editorials.push({
                 headline: item.headline,
                 url: item.url
@@ -80,31 +67,12 @@ $(function() {
       }
 
       var result = [];
-      //groups.sort();
-      console.log("groups...");
-      console.log(groups);
-      /*
-      for (var x in groups) {
-          //console.log(groups);
-          //var arr = [];
-          //result[x] = groups[x];
-          var obj = {};
-          obj[x] = groups[x];
-          result.push(obj);
-      }
-      console.log(_.keys(result));
-      _.sortBy(result, _.keys(result));
 
-      console.log(result);
-      //result = result.sort();
-      */
       displayItems(groups);
 
     })
     .fail(function() {
       console.log( "error" );
     })
-
-  // Perform other work here ...
 
 });
