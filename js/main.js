@@ -32,7 +32,7 @@ $(function() {
 
   // Assign handlers immediately after making the request,
   // and remember the jqxhr object for this request
-  var jqxhr = $.getJSON( "data.json", function() {
+  var jqxhr = $.getJSON( "data/data.json", function() {
     console.log( "success loading data" );
   })
     .done(function(data) {
