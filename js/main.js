@@ -12,7 +12,8 @@ function displayItems(result){
     for (var e = 0; e < topic.editorials.length; e++) {
       edit = topic.editorials[e];
       editHTML = '<div class="editorial" id="' + _.uniqueId('edit_') + '">'
-      editHTML += '<span><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a></span>';
+      editHTML += '<span class="editDate">' + edit.date + '</span>';
+      editHTML += '<span class="editHed"><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a></span>';
       editHTML += '</div>';
       $(editHTML).appendTo("#" + topic.id);
     }
@@ -45,6 +46,7 @@ $(function() {
               insertIndex = _.findIndex(groups, {topic: keyword});
               groups[insertIndex].editorials.push({
                   headline: item.headline,
+                  date: item.date,
                   url: item.url
               });
             }
@@ -60,6 +62,7 @@ $(function() {
             insertIndex = _.findIndex(groups, {topic: item.keywords});
             groups[insertIndex].editorials.push({
                 headline: item.headline,
+                date: item.date,
                 url: item.url
             });
           }
