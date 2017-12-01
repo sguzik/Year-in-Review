@@ -13,8 +13,8 @@ function displayItems(result){
     for (var e = 0; e < topic.editorials.length; e++) {
       edit = topic.editorials[e];
       editHTML = '<div class="editorial" id="' + _.uniqueId('edit_') + '">'
-      editHTML += '<span class="editHed"><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a></span>';
-      editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span>';
+      editHTML += '<span class="editHed"><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a>';
+      editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span></span>';
       editHTML += '</div>';
       $("#" + topic.id).append(editHTML);
 
