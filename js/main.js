@@ -7,32 +7,42 @@ function displayItems(result){
   for (var n = 0; n < result.length; n++) {
     var topic = result[n];
     //console.log(topic);
-    header = '<h2>' + topic.topic + '</h2><div id="' + topic.id + '"></div>';
+    topic.editorials = _.sortBy(topic.editorials, 'date');
+    header = '<div class="topic" id="' + topic.id + '"><h2>' + topic.topic + '</h2></div>';
     $(header).appendTo("#editIndex");
     for (var e = 0; e < topic.editorials.length; e++) {
       edit = topic.editorials[e];
-      editHTML = '<div id="' + _.uniqueId('edit_') + '">'
-      editHTML += '<p><a href="' + edit.url + '">' + edit.headline + '</a></p>';
+      editHTML = '<div class="editorial" id="' + _.uniqueId('edit_') + '">'
+      editHTML += '<span class="editHed"><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a>';
+      editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span></span>';
       editHTML += '</div>';
-      $(editHTML).appendTo("#" + topic.id);
+      $("#" + topic.id).append(editHTML);
+
+      $element = $(editHTML);
+
+      $grid.isotope()
+        .isotope( 'appended', $element )
+        .isotope('layout');
     }
   }
-
-  /*
-  for (var topic in result){
-    console.log(topic);
-    header = "<h2>" + topic + "</h2>";
-    $(header).appendTo("#editIndex");
-  }
-  */
 }
+
+var $grid = $('#editIndex').isotope({
+  // options
+  itemSelector: '.topic',
+  percentPosition: true,
+  masonry: {
+   columnWidth: '.grid-sizer'
+  },
+  layoutMode: 'packery'
+});
+
+var filters = {};
 
 $(function() {
   console.log("Hello, world!");
 
-  // Assign handlers immediately after making the request,
-  // and remember the jqxhr object for this request
-  var jqxhr = $.getJSON( "data.json", function() {
+  var jqxhr = $.getJSON( "data/data.json", function() {
     console.log( "success loading data" );
   })
     .done(function(data) {
@@ -55,14 +65,12 @@ $(function() {
               insertIndex = _.findIndex(groups, {topic: keyword});
               groups[insertIndex].editorials.push({
                   headline: item.headline,
+                  date: item.date,
                   url: item.url
               });
             }
           }else{
             if (!_.find(groups, {topic: item.keywords}) ) {
-              //true
-              //groups.splice(_.sortedIndex(groups, item.keywords), 0, item.keywords);
-              //groups[item.keywords] = [];
               newGroup = {
                 topic: item.keywords,
                 id: _.uniqueId('topic_'),
@@ -70,43 +78,21 @@ $(function() {
               }
               groups.splice(_.sortedIndex(groups, newGroup, 'topic'), 0, newGroup );
             }
-            //console.log(groups);
             insertIndex = _.findIndex(groups, {topic: item.keywords});
-            //console.log( _.findIndex(groups, {topic: item.keywords}) );
             groups[insertIndex].editorials.push({
                 headline: item.headline,
+                date: item.date,
                 url: item.url
             });
           }
 
       }
 
-      var result = [];
-      //groups.sort();
-      console.log("groups...");
-      console.log(groups);
-      /*
-      for (var x in groups) {
-          //console.log(groups);
-          //var arr = [];
-          //result[x] = groups[x];
-          var obj = {};
-          obj[x] = groups[x];
-          result.push(obj);
-      }
-      console.log(_.keys(result));
-      _.sortBy(result, _.keys(result));
-
-      console.log(result);
-      //result = result.sort();
-      */
       displayItems(groups);
 
     })
     .fail(function() {
       console.log( "error" );
-    })
-
-  // Perform other work here ...
+    });
 
 });

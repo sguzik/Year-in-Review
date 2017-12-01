@@ -1,3 +1,54 @@
 body{
   font-family: arial,sans-serif;
 }
+
+#editIndex{
+  position: relative;
+}
+
+.topic, .grid-sizer {
+  width: 100%;
+  position: relative;
+  float: left;
+}
+
+.topic{
+  margin: 0 1.5% 0 0;
+}
+
+.topic h2{
+  margin: 10px 0;
+}
+
+.editorial{
+  display: inline;
+  margin: 5px 0;
+}
+
+.editHed{
+  display: block;
+}
+
+.editHed a {
+  text-decoration: none;
+  color: #208fde;
+}
+
+.editDate{
+  font-size: 10px;
+  color: #555;
+}
+
+@media only screen and (min-width: 450px) {
+    /* For mobile phones: */
+    .topic, .grid-sizer {
+        width: 47%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    /* For mobile phones: */
+    .topic, .grid-sizer {
+        width: 31%;
+    }
+}
