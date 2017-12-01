@@ -8,7 +8,7 @@ function displayItems(result){
     var topic = result[n];
     //console.log(topic);
     topic.editorials = _.sortBy(topic.editorials, 'date');
-    header = '<h2>' + topic.topic + '</h2><div id="' + topic.id + '"></div>';
+    header = '<div class="topic"><h2>' + topic.topic + '</h2><div id="' + topic.id + '"></div></div>';
     $(header).appendTo("#editIndex");
     for (var e = 0; e < topic.editorials.length; e++) {
       edit = topic.editorials[e];
