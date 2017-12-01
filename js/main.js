@@ -34,7 +34,7 @@ var $grid = $('#editIndex').isotope({
   masonry: {
    columnWidth: '.grid-sizer'
   },
-  layoutMode: 'packery'
+  layoutMode: 'masonry'
 });
 
 var filters = {};
