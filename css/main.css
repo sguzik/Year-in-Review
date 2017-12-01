@@ -13,7 +13,7 @@ body{
 }
 
 .topic{
-  margin: 0 0.1%;
+  margin: 0 1.5% 0 0;
 }
 
 .topic h2{
@@ -39,16 +39,16 @@ body{
   color: #555;
 }
 
-@media only screen and (min-width: 569px) {
+@media only screen and (min-width: 450px) {
     /* For mobile phones: */
     .topic, .grid-sizer {
-        width: 33%;
+        width: 47%;
     }
 }
 
 @media only screen and (min-width: 769px) {
     /* For mobile phones: */
     .topic, .grid-sizer {
-        width: 25%;
+        width: 31%;
     }
 }
