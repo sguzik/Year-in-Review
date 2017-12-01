@@ -7,6 +7,7 @@ function displayItems(result){
   for (var n = 0; n < result.length; n++) {
     var topic = result[n];
     //console.log(topic);
+    topic.editorials = _.sortBy(topic.editorials, 'date');
     header = '<h2>' + topic.topic + '</h2><div id="' + topic.id + '"></div>';
     $(header).appendTo("#editIndex");
     for (var e = 0; e < topic.editorials.length; e++) {
@@ -69,7 +70,7 @@ $(function() {
 
       }
 
-      var result = [];
+      //var result = [];
 
       displayItems(groups);
 
