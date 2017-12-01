@@ -1,10 +1,10 @@
-const apMonthsList = ["Jan.","Feb.","March","April","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."];
+var apMonthsList = ["Jan.","Feb.","March","April","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."];
 
-const getDateObjects = function(date) {
-    const dateObj = new Date(Date.parse(date));
-    const day = dateObj.getUTCDate();
-    const month = apMonthsList[dateObj.getUTCMonth()];
-    const year = dateObj.getFullYear();
+function getDateObjects(date) {
+    dateObj = new Date(Date.parse(date));
+    day = dateObj.getUTCDate();
+    month = apMonthsList[dateObj.getUTCMonth()];
+    year = dateObj.getFullYear();
 
     return {
       "day": day,
@@ -13,22 +13,17 @@ const getDateObjects = function(date) {
     }
 };
 
-const makeShortAP = function(date) {
-  const obj = getDateObjects(date);
-  const month = obj.month;
-  const day = obj.day;
+function shortAP(date) {
+  obj = getDateObjects(date);
+  month = obj.month;
+  day = obj.day;
   return month + " " + day;
 };
 
-const makeLongAP = function(date) {
-  const obj = getDateObjects(date);
-  const day = obj.day;
-  const month = obj.month;
-  const year = obj.year;
+function longAP(date) {
+  obj = getDateObjects(date);
+  day = obj.day;
+  month = obj.month;
+  year = obj.year;
   return month + " " + day + ", " + year;
-};
-
-module.exports = {
-  "shortAP": makeShortAP,
-  "longAP": makeLongAP
 };
