@@ -1,3 +1,6 @@
+// based on AP-style-date
+// https://github.com/chrisalcantara/ap-style-date
+
 var apMonthsList = ["Jan.","Feb.","March","April","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."];
 
 function getDateObjects(date) {
