@@ -77,6 +77,15 @@ $(function() {
     })
     .fail(function() {
       console.log( "error" );
-    })
+    });
+
+  jqxhr.done(function(){
+    console.log("working here");
+    $('#editIndex').isotope({
+      // options
+      itemSelector: '.topic',
+      layoutMode: 'fitColumns'
+    });
+  });
 
 });
