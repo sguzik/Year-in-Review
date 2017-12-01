@@ -8,7 +8,7 @@ function displayItems(result){
     var topic = result[n];
     //console.log(topic);
     topic.editorials = _.sortBy(topic.editorials, 'date');
-    header = '<h2>' + topic.topic + '</h2><div id="' + topic.id + '"></div>';
+    header = '<div class="topic" id="' + topic.id + '"><h2>' + topic.topic + '</h2></div>';
     $(header).appendTo("#editIndex");
     for (var e = 0; e < topic.editorials.length; e++) {
       edit = topic.editorials[e];
@@ -16,10 +16,28 @@ function displayItems(result){
       editHTML += '<span class="editHed"><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a></span>';
       editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span>';
       editHTML += '</div>';
-      $(editHTML).appendTo("#" + topic.id);
+      $("#" + topic.id).append(editHTML);
+
+      $element = $(editHTML);
+
+      $grid.isotope()
+        .isotope( 'appended', $element )
+        .isotope('layout');
     }
   }
 }
+
+var $grid = $('#editIndex').isotope({
+  // options
+  itemSelector: '.topic',
+  percentPosition: true,
+  masonry: {
+   columnWidth: '.grid-sizer'
+  },
+  layoutMode: 'packery'
+});
+
+var filters = {};
 
 $(function() {
   console.log("Hello, world!");
@@ -70,13 +88,11 @@ $(function() {
 
       }
 
-      //var result = [];
-
       displayItems(groups);
 
     })
     .fail(function() {
       console.log( "error" );
-    })
+    });
 
 });
