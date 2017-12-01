@@ -6,8 +6,8 @@ body{
   position: relative;
 }
 
-.topic {
-  width: 33%;
+.topic, .grid-sizer {
+  width: 100%;
   position: relative;
   float: left;
 }
@@ -25,4 +25,18 @@ body{
 .editDate{
   font-size: 10px;
   color: #555;
+}
+
+@media only screen and (min-width: 569px) {
+    /* For mobile phones: */
+    .topic, .grid-sizer {
+        width: 33%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    /* For mobile phones: */
+    .topic, .grid-sizer {
+        width: 25%;
+    }
 }

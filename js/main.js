@@ -16,10 +16,28 @@ function displayItems(result){
       editHTML += '<span class="editHed"><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a></span>';
       editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span>';
       editHTML += '</div>';
-      $(editHTML).appendTo("#" + topic.id);
+      $("#" + topic.id).append(editHTML);
+
+      $element = $(editHTML);
+
+      $grid.isotope()
+        .isotope( 'appended', $element )
+        .isotope('layout');
     }
   }
 }
+
+var $grid = $('#editIndex').isotope({
+  // options
+  itemSelector: '.topic',
+  percentPosition: true,
+  masonry: {
+   columnWidth: '.grid-sizer'
+  },
+  layoutMode: 'packery'
+});
+
+var filters = {};
 
 $(function() {
   console.log("Hello, world!");
@@ -70,22 +88,11 @@ $(function() {
 
       }
 
-      //var result = [];
-
       displayItems(groups);
 
     })
     .fail(function() {
       console.log( "error" );
     });
-
-  jqxhr.done(function(){
-    console.log("working here");
-    $('#editIndex').isotope({
-      // options
-      itemSelector: '.topic',
-      layoutMode: 'fitColumns'
-    });
-  });
 
 });
