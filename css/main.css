@@ -12,9 +12,21 @@ body{
   float: left;
 }
 
+.topic{
+  margin: 0 0.1%;
+}
+
+.topic h2{
+  margin: 10px 0;
+}
+
 .editorial{
   display: inline;
-  margin: 0 30px 0 0;
+  margin: 5px 0;
+}
+
+.editHed{
+  display: block;
 }
 
 .editHed a {
