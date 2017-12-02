@@ -21,34 +21,11 @@ function displayItems(result){
       $element = $(editHTML);
 
       $grid.isotope()
-        .isotope( 'appended', $element )
-        .isotope('layout');
+        .isotope( 'insert', $element )
+        ;
     }
   }
 }
-
-// quick search regex
-// https://codepen.io/desandro/pen/wfaGu
-var qsRegex;
-
-var $grid = $('#editIndex').isotope({
-  // options
-  itemSelector: '.topic',
-  percentPosition: true,
-  masonry: {
-   columnWidth: '.grid-sizer'
-  },
-  layoutMode: 'masonry',
-  filter: function() {
-    return qsRegex ? $(this).text().match( qsRegex ) : true;
-  }
-});
-
-// use value of search field to filter
-var $quicksearch = $('.quicksearch').keyup( debounce( function() {
-  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  $grid.isotope();
-}, 200 ) );
 
 // debounce so filtering doesn't happen every millisecond
 function debounce( fn, threshold ) {
@@ -64,6 +41,30 @@ function debounce( fn, threshold ) {
     timeout = setTimeout( delayed, threshold || 100 );
   }
 }
+
+// quick search regex
+var qsRegex;
+
+var $grid = $('.grid').isotope({
+  itemSelector: '.topic',
+  percentPosition: true,
+  masonry: {
+   columnWidth: '.grid-sizer'
+  },
+  layoutMode: 'masonry',
+  filter: function() {
+    //var searchResult = qsRegex ? $(this).text().match( qsRegex ) : true;
+    return qsRegex ? $(this).text().match( qsRegex ) : true;
+    //return searchResult;
+  }
+});
+
+// use value of search field to filter
+var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+  console.log(qsRegex);
+  $grid.isotope();
+}, 200 ) );
 
 //var filters = {};
 
@@ -122,5 +123,8 @@ $(function() {
     .fail(function() {
       console.log( "error" );
     });
-
+  jqxhr.done(function(){
+    $grid.isotope('reloadItems')
+      .isotope();
+  })
 });
