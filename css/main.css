@@ -2,18 +2,25 @@ body{
   font-family: arial,sans-serif;
 }
 
-#editIndex{
+.grid{
+  max-width: 99%;
+  margin: 0 auto;
   position: relative;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
 .topic, .grid-sizer {
   width: 100%;
-  position: relative;
-  float: left;
 }
 
 .topic{
-  margin: 0 1.5% 0 0;
+  float: left;
 }
 
 .topic h2{
@@ -47,15 +54,20 @@ body{
 }
 
 @media only screen and (min-width: 450px) {
-    /* For mobile phones: */
+    /* For tablets: */
+    .grid{
+      max-width: 95%;
+    }
     .topic, .grid-sizer {
-        width: 47%;
+      margin: 0 3% 0 0;
+      width: 47%;
     }
 }
 
 @media only screen and (min-width: 769px) {
-    /* For mobile phones: */
+    /* For web: */
     .topic, .grid-sizer {
-        width: 31%;
+      margin: 0 2% 0 0;
+      width: 31%;
     }
 }
