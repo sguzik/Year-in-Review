@@ -17,13 +17,14 @@ function displayItems(result){
       editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span></span>';
       editHTML += '</div>';
       $("#" + topic.id).append(editHTML);
-
-      $element = $(editHTML);
-
-      $grid.isotope()
-        .isotope( 'insert', $element )
-        ;
     }
+    //$element = $("#" + topic.id);
+    //console.log($element);
+    //$grid.append( $element )
+    //$grid.isotope( 'addItems', $element );
+    //$grid.isotope( 'updateSortData' );
+      //.isotope( 'reloadItems' )
+    console.log("done inserting..." + topic.topic);
   }
 }
 
@@ -46,17 +47,22 @@ function debounce( fn, threshold ) {
 var qsRegex;
 
 var $grid = $('.grid').isotope({
+  initLayout: false,
   itemSelector: '.topic',
   percentPosition: true,
   masonry: {
    columnWidth: '.grid-sizer'
   },
-  layoutMode: 'masonry',
+  layoutMode: 'packery',
   filter: function() {
     //var searchResult = qsRegex ? $(this).text().match( qsRegex ) : true;
     return qsRegex ? $(this).text().match( qsRegex ) : true;
     //return searchResult;
   }
+});
+
+$grid.isotope( 'on', 'arrangeComplete', function() {
+  console.log('arrange is complete');
 });
 
 // use value of search field to filter
@@ -124,7 +130,7 @@ $(function() {
       console.log( "error" );
     });
   jqxhr.done(function(){
-    $grid.isotope('reloadItems')
-      .isotope();
+    $grid.isotope( 'reloadItems' ).isotope();
+    console.log("done");
   })
 });
