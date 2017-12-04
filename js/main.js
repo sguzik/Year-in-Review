@@ -17,27 +17,62 @@ function displayItems(result){
       editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span></span>';
       editHTML += '</div>';
       $("#" + topic.id).append(editHTML);
-
-      $element = $(editHTML);
-
-      $grid.isotope()
-        .isotope( 'appended', $element )
-        .isotope('layout');
     }
+    //$element = $("#" + topic.id);
+    //console.log($element);
+    //$grid.append( $element )
+    //$grid.isotope( 'addItems', $element );
+    //$grid.isotope( 'updateSortData' );
+      //.isotope( 'reloadItems' )
+    console.log("done inserting..." + topic.topic);
   }
 }
 
-var $grid = $('#editIndex').isotope({
-  // options
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  return function debounced() {
+    if ( timeout ) {
+      clearTimeout( timeout );
+    }
+    function delayed() {
+      fn();
+      timeout = null;
+    }
+    timeout = setTimeout( delayed, threshold || 100 );
+  }
+}
+
+// quick search regex
+var qsRegex;
+
+var $grid = $('.grid').isotope({
+  initLayout: false,
   itemSelector: '.topic',
   percentPosition: true,
   masonry: {
    columnWidth: '.grid-sizer'
   },
-  layoutMode: 'masonry'
+  layoutMode: 'packery',
+  filter: function() {
+    //var searchResult = qsRegex ? $(this).text().match( qsRegex ) : true;
+    return qsRegex ? $(this).text().match( qsRegex ) : true;
+    //return searchResult;
+  }
 });
 
-var filters = {};
+$grid.isotope( 'on', 'arrangeComplete', function() {
+  console.log('arrange is complete');
+});
+
+// use value of search field to filter
+var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+  console.log(qsRegex);
+  $grid.isotope();
+}, 200 ) );
+
+//var filters = {};
 
 $(function() {
   console.log("Hello, world!");
@@ -94,5 +129,8 @@ $(function() {
     .fail(function() {
       console.log( "error" );
     });
-
+  jqxhr.done(function(){
+    $grid.isotope( 'reloadItems' ).isotope();
+    console.log("done");
+  })
 });
