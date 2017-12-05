@@ -3,7 +3,6 @@ function isArray(what) {
 }
 
 function displayItems(result){
-  //console.log("made it to display time...")
   for (var n = 0; n < result.length; n++) {
     var topic = result[n];
     //console.log(topic);
@@ -18,13 +17,7 @@ function displayItems(result){
       editHTML += '</div>';
       $("#" + topic.id).append(editHTML);
     }
-    //$element = $("#" + topic.id);
-    //console.log($element);
-    //$grid.append( $element )
-    //$grid.isotope( 'addItems', $element );
-    //$grid.isotope( 'updateSortData' );
-      //.isotope( 'reloadItems' )
-    console.log("done inserting..." + topic.topic);
+    //console.log("done inserting..." + topic.topic);
   }
 }
 
@@ -55,9 +48,7 @@ var $grid = $('.grid').isotope({
   },
   layoutMode: 'packery',
   filter: function() {
-    //var searchResult = qsRegex ? $(this).text().match( qsRegex ) : true;
     return qsRegex ? $(this).text().match( qsRegex ) : true;
-    //return searchResult;
   }
 });
 
@@ -68,11 +59,8 @@ $grid.isotope( 'on', 'arrangeComplete', function() {
 // use value of search field to filter
 var $quicksearch = $('.quicksearch').keyup( debounce( function() {
   qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  console.log(qsRegex);
   $grid.isotope();
 }, 200 ) );
-
-//var filters = {};
 
 $(function() {
   console.log("Hello, world!");
