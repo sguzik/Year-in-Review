@@ -59,7 +59,6 @@ $grid.isotope( 'on', 'arrangeComplete', function() {
 // use value of search field to filter
 var $quicksearch = $('.quicksearch').keyup( debounce( function() {
   qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  console.log(qsRegex);
   $grid.isotope();
 }, 200 ) );
 
