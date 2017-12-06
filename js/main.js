@@ -65,7 +65,7 @@ var $quicksearch = $('.quicksearch').keyup( debounce( function() {
 $(function() {
   console.log("Hello, world!");
 
-  var jqxhr = $.getJSON( "data/data.json", function() {
+  var jqxhr = $.getJSON( dataURL, function() {
     console.log( "success loading data" );
   })
     .done(function(data) {
