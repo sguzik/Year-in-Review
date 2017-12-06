@@ -29,5 +29,5 @@ for row in reader:
 
 data += "] }"
 
-with open('data.json', 'w') as f:
+with open('data2017.json', 'w') as f:
     f.write(data + '\n')
