@@ -36,6 +36,17 @@ function debounce( fn, threshold ) {
   }
 }
 
+//array of letters for alphabetizing the index
+var letters = [
+  {id: 'A', topics:[]}, {id: 'B', topics:[]}, {id: 'C', topics:[]}, {id: 'D', topics:[]},
+  {id: 'E', topics:[]}, {id: 'F', topics:[]}, {id: 'G', topics:[]}, {id: 'H', topics:[]},
+  {id: 'I', topics:[]}, {id: 'J', topics:[]}, {id: 'K', topics:[]}, {id: 'L', topics:[]},
+  {id: 'M', topics:[]}, {id: 'N', topics:[]}, {id: 'O', topics:[]}, {id: 'P', topics:[]},
+  {id: 'Q', topics:[]}, {id: 'R', topics:[]}, {id: 'S', topics:[]}, {id: 'T', topics:[]},
+  {id: 'U', topics:[]}, {id: 'V', topics:[]}, {id: 'W', topics:[]}, {id: 'X', topics:[]},
+  {id: 'Y', topics:[]}, {id: 'Z', topics:[]}
+];
+
 // quick search regex
 var qsRegex;
 
@@ -111,6 +122,7 @@ $(function() {
 
       }
 
+      console.log(groups);
       displayItems(groups);
 
     })
