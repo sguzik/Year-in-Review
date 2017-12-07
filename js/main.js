@@ -54,7 +54,7 @@ var letters = [
 // quick search regex
 var qsRegex;
 
-var $grid = $('.grid').isotope({
+var $grid = $('.edit-grid').isotope({
   initLayout: false,
   itemSelector: '.edit-grid-item',
   percentPosition: true,
