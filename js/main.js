@@ -5,22 +5,30 @@ function isArray(what) {
 function displayItems(result){
   for (var l = 0; l < result.length; l++) {
     var letter = result[l];
-    letterIndex = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>' + letter.id + '</h2></div>';
-    $(letterIndex).appendTo("#editIndex");
-    for (var n = 0; n < letter.topics.length; n++) {
-      var topic = letter.topics[n];
-      topic.editorials = _.sortBy(topic.editorials, 'date');
-      header = '<div class="topic edit-grid-item" id="' + topic.id + '"><h3>' + topic.topic + '</h3></div>';
-      $(header).appendTo("#editIndex");
-      for (var e = 0; e < topic.editorials.length; e++) {
-        edit = topic.editorials[e];
-        editHTML = '<div class="editorial" id="' + _.uniqueId('edit_') + '">'
-        editHTML += '<span class="editHed"><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a>';
-        editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span></span>';
-        editHTML += '</div>';
-        $("#" + topic.id).append(editHTML);
+    if (letter.topics.length > 0){
+      $("#" + letter.id).html('<a href="#' + letter.id + '">' + letter.id + '</a>');
+      header = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>' + letter.id + '</h2>';
+      //$(letterIndex).appendTo("#editIndex");
+      for (var n = 0; n < letter.topics.length; n++) {
+        var topic = letter.topics[n];
+        topic.editorials = _.sortBy(topic.editorials, 'date');
+        //if this is the first topic in the letter, add the topic header to the box
+        if (n === 0){
+          header += '<div class="topic" id="' + topic.id + '"><h3>' + topic.topic + '</h3></div></div>';
+        }else{
+          header = '<div class="topic edit-grid-item" id="' + topic.id + '"><h3>' + topic.topic + '</h3></div>';
+        }
+        $(header).appendTo("#editIndex");
+        for (var e = 0; e < topic.editorials.length; e++) {
+          edit = topic.editorials[e];
+          editHTML = '<div class="editorial" id="' + _.uniqueId('edit_') + '">'
+          editHTML += '<span class="editHed"><a href="' + edit.url + '" target="_blank">' + edit.headline + '</a>';
+          editHTML += '<span class="editDate"> ' + shortAP(edit.date) + '</span></span>';
+          editHTML += '</div>';
+          $("#" + topic.id).append(editHTML);
+        }
+        //console.log("done inserting..." + topic.topic);
       }
-      //console.log("done inserting..." + topic.topic);
     }
   }
 }
@@ -48,7 +56,7 @@ var letters = [
   {id: 'M', topics:[]}, {id: 'N', topics:[]}, {id: 'O', topics:[]}, {id: 'P', topics:[]},
   {id: 'Q', topics:[]}, {id: 'R', topics:[]}, {id: 'S', topics:[]}, {id: 'T', topics:[]},
   {id: 'U', topics:[]}, {id: 'V', topics:[]}, {id: 'W', topics:[]}, {id: 'X', topics:[]},
-  {id: 'Y', topics:[]}, {id: 'Z', topics:[]}, {id: '#', topics:[]}
+  {id: 'Y', topics:[]}, {id: 'Z', topics:[]}, {id: 'numbers', topics:[]}
 ];
 
 // quick search regex
