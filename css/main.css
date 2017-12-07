@@ -23,7 +23,13 @@ body{
   float: left;
 }
 
-.topic h2{
+.letter h2{
+  border-bottom: 1px solid #333;
+  padding: 10px 25px;
+  background: #ececec;
+}
+
+.topic h3{
   margin: 10px 0;
 }
 
