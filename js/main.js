@@ -6,7 +6,11 @@ function displayItems(result){
   for (var l = 0; l < result.length; l++) {
     var letter = result[l];
     if (letter.topics.length > 0){
-      $("#" + letter.id).html('<a href="#' + letter.id + '">' + letter.id + '</a>');
+      if ( l === 26 ){
+        $("#" + letter.id).html('<a href="#' + letter.id + '">#</a>');
+      } else{
+        $("#" + letter.id).html('<a href="#' + letter.id + '">' + letter.id + '</a>');
+      }
       header = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>' + letter.id + '</h2>';
       //$(letterIndex).appendTo("#editIndex");
       for (var n = 0; n < letter.topics.length; n++) {
