@@ -2,6 +2,13 @@ function isArray(what) {
     return Object.prototype.toString.call(what) === '[object Array]';
 }
 
+// ------ does what it says
+function goToByScroll(id) {
+    $('html,body').animate({
+        scrollTop: $("#" + id).offset().top - 50
+    }, 'slow');
+}
+
 function displayItems(result){
   for (var l = 0; l < result.length; l++) {
     var letter = result[l];
@@ -157,6 +164,11 @@ $(function() {
     });
   jqxhr.done(function(){
     $grid.isotope( 'reloadItems' ).isotope();
+
+    $(".letter-link").click(function() {
+      clicked = this;
+      goToByScroll("letter_" + $(clicked).attr("id"));
+    });
     console.log("done");
   })
 });
