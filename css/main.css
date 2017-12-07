@@ -9,10 +9,25 @@ body{
 }
 
 /* clear fix */
-.grid:after {
+.edit-grid:after {
   content: '';
   display: block;
   clear: both;
+}
+
+#index-letters{
+  display: none;
+}
+
+#index-letters span{
+  font-size:1.2em;
+  font-weight:bold;
+  color: #ccc;
+}
+
+#index-letters span a {
+    color: #208fde;
+    text-decoration: none;
 }
 
 .edit-grid-item, .grid-sizer {
@@ -61,12 +76,17 @@ body{
 
 @media only screen and (min-width: 450px) {
     /* For tablets: */
-    .grid{
+    .edit-grid{
       max-width: 95%;
     }
     .edit-grid-item, .grid-sizer {
       margin: 0 3% 0 0;
       width: 47%;
+    }
+    #index-letters{
+      display: block;
+      margin: 0 auto;
+      text-align: center;
     }
 }
 
