@@ -44,7 +44,7 @@ var letters = [
   {id: 'M', topics:[]}, {id: 'N', topics:[]}, {id: 'O', topics:[]}, {id: 'P', topics:[]},
   {id: 'Q', topics:[]}, {id: 'R', topics:[]}, {id: 'S', topics:[]}, {id: 'T', topics:[]},
   {id: 'U', topics:[]}, {id: 'V', topics:[]}, {id: 'W', topics:[]}, {id: 'X', topics:[]},
-  {id: 'Y', topics:[]}, {id: 'Z', topics:[]}
+  {id: 'Y', topics:[]}, {id: 'Z', topics:[]}, {id: '#', topics:[]}
 ];
 
 // quick search regex
@@ -120,6 +120,16 @@ $(function() {
             });
           }
 
+      }
+
+      for (var t = 0; t < groups.length; t++) {
+        var group = groups[t];
+        insertIndex = _.findIndex(letters, {id: group.topic.charAt(0) });
+        if (insertIndex >= 0){
+        }else{
+          insertIndex = 26;
+        }
+        letters[insertIndex].topics.push(group);
       }
 
       console.log(groups);
