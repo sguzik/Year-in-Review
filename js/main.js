@@ -15,11 +15,11 @@ function displayItems(result){
     if (letter.topics.length > 0){
       if ( l === 26 ){
         $("#" + letter.id).html('<a href="#' + letter.id + '">#</a>');
+        header = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>#</h2>';
       } else{
         $("#" + letter.id).html('<a href="#' + letter.id + '">' + letter.id + '</a>');
+        header = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>' + letter.id + '</h2>';
       }
-      header = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>' + letter.id + '</h2>';
-      //$(letterIndex).appendTo("#editIndex");
       for (var n = 0; n < letter.topics.length; n++) {
         var topic = letter.topics[n];
         topic.editorials = _.sortBy(topic.editorials, 'date');
