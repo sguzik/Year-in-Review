@@ -15,11 +15,11 @@ body{
   clear: both;
 }
 
-.topic, .grid-sizer {
+.edit-grid-item, .grid-sizer {
   width: 100%;
 }
 
-.topic{
+.edit-grid-item{
   float: left;
 }
 
@@ -58,7 +58,7 @@ body{
     .grid{
       max-width: 95%;
     }
-    .topic, .grid-sizer {
+    .edit-grid-item, .grid-sizer {
       margin: 0 3% 0 0;
       width: 47%;
     }
@@ -66,7 +66,7 @@ body{
 
 @media only screen and (min-width: 769px) {
     /* For web: */
-    .topic, .grid-sizer {
+    .edit-grid-item, .grid-sizer {
       margin: 0 2% 0 0;
       width: 31%;
     }
