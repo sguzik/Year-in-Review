@@ -62,10 +62,6 @@ body{
   margin: 0 0 5px 0;
 }
 
-.editHed::before{
-  content: '- ';
-}
-
 .editHed a {
   text-decoration: none;
   color: #208fde;
