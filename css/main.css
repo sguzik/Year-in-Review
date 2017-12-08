@@ -38,6 +38,10 @@ body{
   float: left;
 }
 
+.deactive{
+  display: none!important;
+}
+
 .letter h2{
   border-bottom: 1px solid #333;
   padding: 10px 25px;
