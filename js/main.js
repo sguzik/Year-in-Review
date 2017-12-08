@@ -1,3 +1,14 @@
+/*
+ * JS for Editorial Index
+ * Author: smg
+ *
+ * Created as a 2017 end of year project. Inspired by the NYT Trump Insults index:
+ * https://www.nytimes.com/interactive/2016/01/28/upshot/donald-trump-twitter-insults.html
+ *
+ * Requires Isotope (for display + filtering) and Underscore.js
+ */
+
+// ------ checks if a variable is an array
 function isArray(what) {
     return Object.prototype.toString.call(what) === '[object Array]';
 }
@@ -9,10 +20,13 @@ function goToByScroll(id) {
     }, 'slow');
 }
 
+// ------ does what it says
 function displayItems(result){
   for (var l = 0; l < result.length; l++) {
     var letter = result[l];
     if (letter.topics.length > 0){
+      //set up the letter flags for the index
+      //need to handle the final letter differently (it's a number)
       if ( l === 26 ){
         $("#" + letter.id).html('<a href="#' + letter.id + '">#</a>');
         header = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>#</h2>';
@@ -38,7 +52,6 @@ function displayItems(result){
           editHTML += '</div>';
           $("#" + topic.id).append(editHTML);
         }
-        //console.log("done inserting..." + topic.topic);
       }
     }
   }
@@ -70,6 +83,9 @@ var letters = [
   {id: 'Y', topics:[]}, {id: 'Z', topics:[]}, {id: 'numbers', topics:[]}
 ];
 
+//array to hold the groups
+var groups = [];
+
 // quick search regex
 var qsRegex;
 
@@ -82,6 +98,7 @@ var $grid = $('.edit-grid').isotope({
   },
   layoutMode: 'packery',
   filter: function() {
+    //hide the letter flag and links when searching
     if (qsRegex){
       if ( qsRegex.source === '(?:)'){
         $(".letter h2").removeClass("deactive");
@@ -106,20 +123,18 @@ var $quicksearch = $('.quicksearch').keyup( debounce( function() {
 }, 200 ) );
 
 $(function() {
-  console.log("Hello, world!");
-
   var jqxhr = $.getJSON( dataURL, function() {
     console.log( "success loading data" );
   })
     .done(function(data) {
-      //console.log(data.editorials);
-      var groups = [];
-
+      //each item arrives as an individual item, we want it grouped
       for (var i = 0; i < data.editorials.length; i++) {
           var item = data.editorials[i];
+          //need to differentiate between editorials that have multiple keywords
           if(isArray(item.keywords)){
             for (var a = 0; a < item.keywords.length; a++) {
               var keyword = item.keywords[a];
+              //check to see if we're encountering a new keyword
               if(!_.find(groups, {topic: keyword}) ){
                 newGroup = {
                   topic: keyword,
@@ -154,6 +169,7 @@ $(function() {
 
       }
 
+      //alphabetizing the groups for display
       for (var t = 0; t < groups.length; t++) {
         var group = groups[t];
         insertIndex = _.findIndex(letters, {id: group.topic.charAt(0) });
@@ -165,10 +181,9 @@ $(function() {
       }
 
       displayItems(letters);
-
     })
     .fail(function() {
-      console.log( "error" );
+      console.log( "error: data failed to load." );
     });
   jqxhr.done(function(){
     $grid.isotope( 'reloadItems' ).isotope();
