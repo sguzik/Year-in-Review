@@ -29,17 +29,17 @@ function displayItems(result){
       //need to handle the final letter differently (it's a number)
       if ( l === 26 ){
         $("#" + letter.id).html('<a href="#' + letter.id + '">#</a>');
-        header = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>#</h2>';
+        header = '<div class="stamp edit-grid-item" id="letter_' + letter.id + '"><h2>#</h2></div>';
       } else{
         $("#" + letter.id).html('<a href="#' + letter.id + '">' + letter.id + '</a>');
-        header = '<div class="letter edit-grid-item" id="letter_' + letter.id + '"><h2>' + letter.id + '</h2>';
+        header = '<div class="stamp edit-grid-item" id="letter_' + letter.id + '"><h2>' + letter.id + '</h2></div>';
       }
       for (var n = 0; n < letter.topics.length; n++) {
         var topic = letter.topics[n];
         topic.editorials = _.sortBy(topic.editorials, 'date');
         //if this is the first topic in the letter, add the topic header to the box
         if (n === 0){
-          header += '<div class="topic" id="' + topic.id + '"><h3>' + topic.topic + '</h3></div></div>';
+          header += '<div class="topic edit-grid-item" id="' + topic.id + '"><h3>' + topic.topic + '</h3></div>';
         }else{
           header = '<div class="topic edit-grid-item" id="' + topic.id + '"><h3>' + topic.topic + '</h3></div>';
         }
@@ -96,7 +96,7 @@ var $grid = $('.edit-grid').isotope({
   masonry: {
    columnWidth: '.grid-sizer'
   },
-  layoutMode: 'packery',
+  layoutMode: 'masonry',
   filter: function() {
     //hide the letter flag and links when searching
     if (qsRegex){
