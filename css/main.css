@@ -46,10 +46,10 @@ body{
   display: none!important;
 }
 
-.letter h2{
+.stamp h2{
   border-bottom: 1px solid #333;
   padding: 10px 25px;
-  background: #ececec;
+  background: #f3f3f3;
 }
 
 .topic h3{
