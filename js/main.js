@@ -164,7 +164,6 @@ $(function() {
         letters[insertIndex].topics.push(group);
       }
 
-      console.log(groups);
       displayItems(letters);
 
     })
