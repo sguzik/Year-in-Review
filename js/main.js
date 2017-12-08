@@ -82,10 +82,14 @@ var $grid = $('.edit-grid').isotope({
   },
   layoutMode: 'packery',
   filter: function() {
-    if (qsRegex === "/(?:)/gi"){
-      $(".letter").show();
-    }else{
-      $(".letter").hide();
+    if (qsRegex){
+      if ( qsRegex.source === '(?:)'){
+        $(".letter h2").removeClass("deactive");
+        $("#index-letters").removeClass("deactive");
+      } else{
+        $(".letter h2").addClass("deactive");
+        $("#index-letters").addClass("deactive");
+      }
     }
     return qsRegex ? $(this).text().match( qsRegex ) : true;
   }
