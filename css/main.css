@@ -34,14 +34,22 @@ body{
   width: 100%;
 }
 
+.stamp{
+  width: 100%!important;
+}
+
 .edit-grid-item{
   float: left;
 }
 
-.letter h2{
+.deactive{
+  display: none!important;
+}
+
+.stamp h2{
   border-bottom: 1px solid #333;
   padding: 10px 25px;
-  background: #ececec;
+  background: #f3f3f3;
 }
 
 .topic h3{
@@ -56,10 +64,6 @@ body{
 .editHed{
   display: block;
   margin: 0 0 5px 0;
-}
-
-.editHed::before{
-  content: '- ';
 }
 
 .editHed a {
