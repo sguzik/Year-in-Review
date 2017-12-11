@@ -16,7 +16,7 @@ function isArray(what) {
 // ------ does what it says
 function goToByScroll(id) {
     $('html,body').animate({
-        scrollTop: $("#" + id).offset().top
+        scrollTop: $("#" + id).offset().top - 50
     }, 'slow');
 }
 
