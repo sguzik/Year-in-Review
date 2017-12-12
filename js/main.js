@@ -57,6 +57,16 @@ function displayItems(result){
   }
 }
 
+// ------ displays an error for empty searches
+function checkForResults() {
+  var results = $grid.isotope('getFilteredItemElements').length;
+  if (results === 0){
+    $("#emptySearch").css("display", "block");
+  } else{
+    $("#emptySearch").css("display", "none");
+  }
+}
+
 // debounce so filtering doesn't happen every millisecond
 function debounce( fn, threshold ) {
   var timeout;
@@ -114,6 +124,7 @@ var $grid = $('.edit-grid').isotope({
 
 $grid.isotope( 'on', 'arrangeComplete', function() {
   console.log('arrange is complete');
+  checkForResults();
 });
 
 // use value of search field to filter
