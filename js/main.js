@@ -53,6 +53,8 @@ function displayItems(result){
           $("#" + topic.id).append(editHTML);
         }
       }
+      link = '<div class="stamp edit-grid-item" id="return_' + letter.id +'"><span class="return">return to top</span></div>';
+      $(link).appendTo("#editIndex");
     }
   }
 }
@@ -202,6 +204,10 @@ $(function() {
     $(".letter-link").click(function() {
       clicked = this;
       goToByScroll("letter_" + $(clicked).attr("id"));
+    });
+
+    $(".return").click(function() {
+      goToByScroll("quickSearch");
     });
     console.log("done");
   })
