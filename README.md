@@ -54,3 +54,8 @@ team will be able to help you set that up. Rename it something logical
 (`data2018.json`, for example) before uploading. Multiple directories can exist
 for the same year (eg, columns and editorials), they just need to have different
 file names for the JSON file.
+
+## Other notes
+* The project shouldn't require much styling from year to year, but design might
+want to take a look in order to be sure nothing is out-dated on the site.
+* The search is pretty fuzzy.
