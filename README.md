@@ -27,7 +27,7 @@ right corner of this page and using the .zip option.
 
 The JSON creator script uses the programming language Python, which is installed
 on Mac laptops by default. Using this script should not require any customization
-or upgrading of Mac's default Python installation. 
+or upgrading of Mac's default Python installation.
 
 ## Using the JSON creator script
 During the year, we record each editorial in a Google Spreadsheet. The JSON
@@ -64,6 +64,27 @@ team will be able to help you set that up. Rename it something logical
 (`data2018.json`, for example) before uploading. Multiple directories can exist
 for the same year (eg, columns and editorials), they just need to have different
 file names for the JSON file.
+
+## What's next?
+Once you've created the JSON file, send it to the dev team so it can be deployed
+to Newsday's production servers. In the past, we've used the directory
+`/assets/editorials/data/`.
+
+When you create the WordPress post for this project, be sure to include all the
+project dependecies in the "Post Custom JS" field (if you don't see that field,
+check with the dev team). The following snippet can be pasted directly into
+WordPress, as long as you update the filename in the `dataURL` line.
+
+```
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="//npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<script src="//npmcdn.com/isotope-packery@2/packery-mode.pkgd.js"></script>
+<script type="text/javascript">
+  var dataURL = "/assets/editorials/data/YOURFILENAME.json";
+</script>
+<script src="/assets/editorials/js/main.js"></script>
+<script src="/assets/editorials/js/apstyle.js"></script>
+```
 
 ## Other notes
 * The project shouldn't require much styling from year to year, but design might
