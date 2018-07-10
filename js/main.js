@@ -53,7 +53,19 @@ function displayItems(result){
           $("#" + topic.id).append(editHTML);
         }
       }
+      link = '<div class="stamp edit-grid-item" id="return_' + letter.id +'"><span class="return">return to top</span></div>';
+      $(link).appendTo("#editIndex");
     }
+  }
+}
+
+// ------ displays an error for empty searches
+function checkForResults() {
+  var results = $grid.isotope('getFilteredItemElements').length;
+  if (results === 0){
+    $("#emptySearch").css("display", "block");
+  } else{
+    $("#emptySearch").css("display", "none");
   }
 }
 
@@ -114,6 +126,7 @@ var $grid = $('.edit-grid').isotope({
 
 $grid.isotope( 'on', 'arrangeComplete', function() {
   console.log('arrange is complete');
+  checkForResults();
 });
 
 // use value of search field to filter
@@ -191,6 +204,10 @@ $(function() {
     $(".letter-link").click(function() {
       clicked = this;
       goToByScroll("letter_" + $(clicked).attr("id"));
+    });
+
+    $(".return").click(function() {
+      goToByScroll("quickSearch");
     });
     console.log("done");
   })
