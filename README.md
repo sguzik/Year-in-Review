@@ -19,6 +19,16 @@ file into the furniture that's in the HTML page.
 
 The project also uses Isotope, a JavaScript library, to handle layout.
 
+## Getting started
+This documentation assumes that you've downloaded all the project files to your
+local machine. To do that [click here](https://github.com/sguzik/Year-in-Review/archive/master.zip).
+You can also download all the files by clicking "Clone or download" on the top
+right corner of this page and using the .zip option.
+
+The JSON creator script uses the programming language Python, which is installed
+on Mac laptops by default. Using this script should not require any customization
+or upgrading of Mac's default Python installation. 
+
 ## Using the JSON creator script
 During the year, we record each editorial in a Google Spreadsheet. The JSON
 Creator takes that information (downloaded as a CSV) and reformats it for use
