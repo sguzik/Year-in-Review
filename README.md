@@ -75,7 +75,7 @@ project dependecies in the "Post Custom JS" field (if you don't see that field,
 check with the dev team). The following snippet can be pasted directly into
 WordPress, as long as you update the filename in the `dataURL` line.
 
-```
+```javascript
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="//npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 <script src="//npmcdn.com/isotope-packery@2/packery-mode.pkgd.js"></script>
