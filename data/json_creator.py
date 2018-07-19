@@ -5,7 +5,7 @@ reader = csv.reader( open('editorials.csv', 'r'), delimiter=",")
 total_rows = sum(1 for _ in reader) - 1
 reader = csv.reader( open('editorials.csv', 'r'), delimiter=",")
 next(reader)
-print total_rows
+print "Converting {} CSV rows into JSON...".format(total_rows)
 
 data = '{"editorials": ['
 rows_so_far = 0
@@ -29,5 +29,7 @@ for row in reader:
 
 data += "] }"
 
-with open('data2017.json', 'w') as f:
+with open('data.json', 'w') as f:
     f.write(data + '\n')
+
+print "Processing complete!"
