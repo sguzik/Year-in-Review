@@ -105,3 +105,4 @@ WordPress, as long as you update the filename in the `dataURL` line.
 * The project shouldn't require much styling from year to year, but design might
 want to take a look in order to be sure nothing is out-dated on the site.
 * The search is pretty fuzzy.
+* This project was inspired by The New York Times [Trump Insults index](https://www.nytimes.com/interactive/2016/01/28/upshot/donald-trump-twitter-insults.html).
