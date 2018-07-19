@@ -29,7 +29,7 @@ The JSON creator script uses the programming language Python, which is installed
 on Mac laptops by default. Using this script should not require any customization
 or upgrading of Mac's default Python installation.
 
-## Using the JSON creator script
+## Background
 During the year, we record each editorial in a Google Spreadsheet. The JSON
 Creator takes that information (downloaded as a CSV) and reformats it for use
 with this project.
@@ -40,14 +40,19 @@ The editorials CSV *must* use the following format:
 |----------|--------|--------------|--------|--------|
 |YYYY-MM-DD|Hed     |http://www... |required|optional|
 
-`Keyword1` is required, `Keyword2` is optional.
+`Keyword1` is required, `Keyword2` is optional. The spreadsheet includes some
+validation to create consistency among keywords. If you're having trouble adding
+a keyword, first check the "Category List" tab for similar keywords. If nothing
+exists, add your keyword to the list; you should then be able to enter it in the
+main spreadsheet.
 
+## Using the JSON creator script
 When you're ready to get started formatting the end of year directory, download
 this entire folder to your computer -- for simplicity, this writeup assumes the
 folder is saved to your desktop.
 
 Start by getting the editorial CSV from Google. Be sure to download the sheet
-labled `Download Version` -- that cleans up any notes or formatting from the
+labeled `Download Version` -- that cleans up any notes or formatting from the
 sheet where data is entered. Save the CSV to the `data` directory, with
 the filename `editorials.csv` (there will be a file with that name; just save
 over it).
