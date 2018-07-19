@@ -20,8 +20,8 @@ file into the furniture that's in the HTML page.
 The project also uses Isotope, a JavaScript library, to handle layout.
 
 This repository includes a file called [`data2017.json`](https://github.com/sguzik/Year-in-Review/blob/master/data/data2017.json).
-That is a sample output of the `json_creator.py` script -- a JSON file used to
-power a visualization.
+That is a sample output of the [`json_creator.py`](https://github.com/sguzik/Year-in-Review/blob/master/data/json_creator.py)
+script -- a JSON file used to power a visualization.
 
 ## Getting started
 This documentation assumes that you've downloaded all the project files to your
