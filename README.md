@@ -45,10 +45,11 @@ The editorials CSV *must* use the following format:
 When you're ready to get started formatting the end of year directory, download
 this entire folder to your computer.
 
-Start by getting the editorial CSV from Google. Before downloading it, be sure
-to clear any stray columns (for example, notes or alternate tags that were
-being saved for future reference). Save the CSV to the `data` directory, with
-the filename `editorials.csv`.
+Start by getting the editorial CSV from Google. Be sure to download the sheet
+labled `Download Version` -- that cleans up any notes or formatting from the
+sheet where data is entered. Save the CSV to the `data` directory, with
+the filename `editorials.csv` (there will be a file with that name; just save
+over it).
 
 Once you've done that, open Terminal on your computer and navigate to the
 correct directory. For example, if the project is in a folder called `2017` that
