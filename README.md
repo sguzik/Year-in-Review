@@ -62,10 +62,13 @@ correct directory. For example, if the project is in a folder called `2018` that
 is saved to your desktop, type `cd ~/Desktop/2018/data` and then hit enter. You
 should see the folder name (`data`) displayed at the start of the Terminal line.
 
-Next, type `python json_creator.py` to run the JSON creator. If it works, you will
-see a number and then a blank Terminal line. That number is the total of
-editorials run last year. The file `data.json` will be created (or overwritten)
-in the `data` directory (the same place you saved `editorials.csv` earlier).
+Next, type `python json_creator.py` to run the JSON creator. First, the script
+should print the number of rows in the CSV -- for example, `Converting 416 CSV
+rows into JSON...` (that is the total number of editorials in the file).
+When the script is finished, it will print the message `Processing complete!`
+and you will see a blank Terminal line. The file `data.json` will be created
+(or overwritten) in the `data` directory (the same  place you saved
+`editorials.csv` earlier).
 
 That file needs to get uploaded to Newsday's project server. Someone on the dev
 team will be able to help you set that up. Rename it something logical
